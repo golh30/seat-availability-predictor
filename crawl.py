@@ -29,23 +29,6 @@ def create_connection():
         print("Error while connecting to the database:", e)
         return None
 
-def insert_data(con, emp_name, emp_age):
-    """Insert data into the emp_data table."""
-    try:
-        curs_obj = con.cursor()
-        insert_query = sql.SQL("INSERT INTO emp_data (emp_name, emp_age) VALUES (%s, %s)")
-        curs_obj.execute(insert_query, (emp_name, emp_age))
-        
-        # Commit the changes to the database
-        con.commit()
-        
-        print(f"Inserted: {emp_name}, Age: {emp_age}")
-        
-    except Exception as e:
-        print("Error while inserting data:", e)
-    finally:
-        curs_obj.close()
-
 def remove_whitespace(text: str) -> str:
     """Removes all spaces, newlines, and extra whitespace from the given text."""
     return re.sub(r"\s+", " ", text)
